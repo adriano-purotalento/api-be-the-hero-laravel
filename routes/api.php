@@ -17,12 +17,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('ongs', 'API\OngController');
-Route::apiResource('sessions', 'API\SessionController');
-Route::apiResource('profile', 'API\ProfileController');
-Route::apiResource('incidents', 'API\IncidentsController');
+Route::namespace('API')->group(function () {
+    Route::apiResource('ongs', 'OngController');
+    Route::apiResource('sessions', 'SessionController');
+    Route::apiResource('profile', 'ProfileController');
+    Route::apiResource('incidents', 'IncidentsController');
+});
 
 Route::group(['middleware' => 'auth.basic'], function () {
 
 });
-

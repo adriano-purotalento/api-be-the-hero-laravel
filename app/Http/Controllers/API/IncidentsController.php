@@ -95,7 +95,7 @@ class IncidentsController extends Controller
 
      $incident->delete();
 
-     return response(204);
+     return response(Response::HTTP_NO_CONTENT);
   }
 
 }
